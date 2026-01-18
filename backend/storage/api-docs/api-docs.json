@@ -384,13 +384,13 @@
                 }
             }
         },
-        "/api/subjects": {
+        "/api/admin/subject": {
             "get": {
                 "tags": [
                     "Subjects"
                 ],
                 "summary": "Get all subjects",
-                "operationId": "34286c70d4c91a311266cba4d6d1ffff",
+                "operationId": "f7e4f6c772f6fb9a30395f685ff61bf4",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -412,7 +412,7 @@
                     "Subjects"
                 ],
                 "summary": "Create a new subject",
-                "operationId": "d0de8922a958d053acfddfa9719e1353",
+                "operationId": "dd30ed6cd270571274be253fbb67a4fa",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -437,13 +437,13 @@
                 }
             }
         },
-        "/api/subjects/{id}": {
+        "/api/admin/subject/{id}": {
             "get": {
                 "tags": [
                     "Subjects"
                 ],
                 "summary": "Get a subject by ID",
-                "operationId": "cae1ed5251c26f18b11519d0d23d9ee2",
+                "operationId": "98af5916c2c838128e0a91e8dfbd18c0",
                 "parameters": [
                     {
                         "name": "id",
@@ -461,7 +461,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Subject"
+                                    "$ref": "#/components/schemas/SubjectWithMaterials"
                                 }
                             }
                         }
@@ -476,7 +476,7 @@
                     "Subjects"
                 ],
                 "summary": "Update a subject by ID",
-                "operationId": "2493e5c1aff1cc51d0714a145512e987",
+                "operationId": "f9c92bcefbad82fc923a27ccc25152d9",
                 "parameters": [
                     {
                         "name": "id",
@@ -519,7 +519,7 @@
                     "Subjects"
                 ],
                 "summary": "Delete a subject by ID",
-                "operationId": "50e23842ecde692fb1342ef4fe40f506",
+                "operationId": "85ffbe39280b2ebd337b3eada5144826",
                 "parameters": [
                     {
                         "name": "id",
@@ -614,6 +614,41 @@
                     }
                 },
                 "type": "object"
+            },
+            "SubjectWithMaterials": {
+                "description": "Subject with materials",
+                "properties": {
+                    "id": {
+                        "description": "Subject ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Subject name",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Subject description",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "materials": {
+                        "description": "List of materials",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Material"
+                        }
+                    }
+                },
+                "type": "object"
             }
         },
         "securitySchemes": {
@@ -641,6 +676,10 @@
     },
     "tags": [
         {
+            "name": "Subjects",
+            "description": "API endpoints for managing subjects"
+        },
+        {
             "name": "User register",
             "description": "User register"
         },
@@ -655,10 +694,6 @@
         {
             "name": "Materials",
             "description": "Materials"
-        },
-        {
-            "name": "Subjects",
-            "description": "Subjects"
         }
     ],
     "security": [
