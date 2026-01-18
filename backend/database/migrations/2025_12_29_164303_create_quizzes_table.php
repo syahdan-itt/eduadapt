@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('material_id')->constrained()->cascadeOnDelete();
             $table->text('question');
+            $table->string('question_type'); // e.g., multiple_choice, true_false, short_answer, long_answer
             $table->enum('difficulty', ['easy', 'medium', 'hard'])->default('easy');
             $table->timestamps();
         });

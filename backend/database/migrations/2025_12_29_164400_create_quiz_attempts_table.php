@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('quiz_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('selected_option_id')->constrained('quiz_options')->cascadeOnDelete();
+            $table->foreignId('selected_option_id')->nullable()->constrained('quiz_options')->cascadeOnDelete();
+            $table->text('text_answer')->nullable();
             $table->boolean('is_correct');
             $table->integer('time_spent')->comment('seconds');
             $table->timestamps();
