@@ -14,7 +14,7 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::middleware('role:teacher')->group(function () {
+    Route::middleware('role:1')->group(function () {
         Route::get('/materials', [MaterialController::class, 'index']);
         Route::get('/materials/{id}', [MaterialController::class, 'show']);
         Route::post('/materials', [MaterialController::class, 'store']);
@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('/materials/{id}', [MaterialController::class, 'destroy']);
     });
 
-    Route::middleware('role:teacher,student')->group(function () {
-        
+    Route::middleware('role:2')->group(function () {
+
     });
 });
