@@ -185,23 +185,437 @@
                     }
                 ]
             }
+        },
+        "/api/materials": {
+            "get": {
+                "tags": [
+                    "Materials"
+                ],
+                "summary": "Get all materials for the authenticated user",
+                "operationId": "42403b6ae18ed76398877d9021f41da1",
+                "responses": {
+                    "200": {
+                        "description": "List of materials",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Material"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Materials"
+                ],
+                "summary": "Create a new material",
+                "operationId": "83a189e79b6600c5809a10bf638c485d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "subject_id",
+                                    "title",
+                                    "content_text",
+                                    "difficulty"
+                                ],
+                                "properties": {
+                                    "subject_id": {
+                                        "type": "integer"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "content_text": {
+                                        "type": "string"
+                                    },
+                                    "difficulty": {
+                                        "type": "string",
+                                        "enum": [
+                                            "easy",
+                                            "medium",
+                                            "hard"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Material created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Material"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/materials/{id}": {
+            "get": {
+                "tags": [
+                    "Materials"
+                ],
+                "summary": "Get a specific material by ID",
+                "operationId": "c3da4c2b616ce7dc73b898b09e300ee8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the material to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Material details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Material"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Materials"
+                ],
+                "summary": "Update a material by ID",
+                "operationId": "ab3ee24b889ae208f872eb9e540de83c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the material to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "subject_id",
+                                    "title",
+                                    "content_text",
+                                    "difficulty"
+                                ],
+                                "properties": {
+                                    "subject_id": {
+                                        "type": "integer"
+                                    },
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "content_text": {
+                                        "type": "string"
+                                    },
+                                    "difficulty": {
+                                        "type": "string",
+                                        "enum": [
+                                            "easy",
+                                            "medium",
+                                            "hard"
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Material updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Material"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Materials"
+                ],
+                "summary": "Delete a material by ID",
+                "operationId": "b9cfea7474e82c257c68c48fa85f104f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the material to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Material deleted successfully"
+                    }
+                }
+            }
+        },
+        "/api/subjects": {
+            "get": {
+                "tags": [
+                    "Subjects"
+                ],
+                "summary": "Get all subjects",
+                "operationId": "34286c70d4c91a311266cba4d6d1ffff",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Subject"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Subjects"
+                ],
+                "summary": "Create a new subject",
+                "operationId": "d0de8922a958d053acfddfa9719e1353",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Subject"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Subject created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Subject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/subjects/{id}": {
+            "get": {
+                "tags": [
+                    "Subjects"
+                ],
+                "summary": "Get a subject by ID",
+                "operationId": "cae1ed5251c26f18b11519d0d23d9ee2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the subject to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Subject"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Subject not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subjects"
+                ],
+                "summary": "Update a subject by ID",
+                "operationId": "2493e5c1aff1cc51d0714a145512e987",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the subject to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Subject"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Subject updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Subject"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Subject not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subjects"
+                ],
+                "summary": "Delete a subject by ID",
+                "operationId": "50e23842ecde692fb1342ef4fe40f506",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the subject to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Subject deleted successfully"
+                    },
+                    "404": {
+                        "description": "Subject not found"
+                    }
+                }
+            }
         }
     },
-    "tags": [
-        {
-            "name": "User register",
-            "description": "User register"
-        },
-        {
-            "name": "User login",
-            "description": "User login"
-        },
-        {
-            "name": "User logout",
-            "description": "User logout"
-        }
-    ],
     "components": {
+        "schemas": {
+            "Material": {
+                "properties": {
+                    "id": {
+                        "description": "Material ID",
+                        "type": "integer"
+                    },
+                    "subject_id": {
+                        "description": "Subject ID",
+                        "type": "integer"
+                    },
+                    "title": {
+                        "description": "Title of the material",
+                        "type": "string"
+                    },
+                    "content_text": {
+                        "description": "Content text of the material",
+                        "type": "string"
+                    },
+                    "difficulty": {
+                        "description": "Difficulty level of the material",
+                        "type": "string",
+                        "enum": [
+                            "easy",
+                            "medium",
+                            "hard"
+                        ]
+                    },
+                    "created_by": {
+                        "description": "ID of the user who created the material",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Subject": {
+                "properties": {
+                    "id": {
+                        "description": "Subject ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Name of the subject",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Description of the subject",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "securitySchemes": {
             "passport": {
                 "type": "oauth2",
@@ -225,6 +639,28 @@
             }
         }
     },
+    "tags": [
+        {
+            "name": "User register",
+            "description": "User register"
+        },
+        {
+            "name": "User login",
+            "description": "User login"
+        },
+        {
+            "name": "User logout",
+            "description": "User logout"
+        },
+        {
+            "name": "Materials",
+            "description": "Materials"
+        },
+        {
+            "name": "Subjects",
+            "description": "Subjects"
+        }
+    ],
     "security": [
         {
             "sanctum": []

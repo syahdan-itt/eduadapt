@@ -40,4 +40,83 @@ class MaterialControllerDoc
      *    )
      * )
      */
+    public function show() {}
+
+    /**
+     * @OA\Post(
+     *    path="/api/materials",
+     *    tags={"Materials"},
+     *    summary="Create a new material",
+     *    @OA\RequestBody(
+     *        required=true,
+     *        @OA\JsonContent(
+     *            required={"subject_id", "title", "content_text", "difficulty"},
+     *            @OA\Property(property="subject_id", type="integer"),
+     *            @OA\Property(property="title", type="string"),
+     *            @OA\Property(property="content_text", type="string"),
+     *            @OA\Property(property="difficulty", type="string", enum={"easy", "medium", "hard"}),
+     *        )
+     *    ),
+     *    @OA\Response(
+     *        response=201,
+     *        description="Material created successfully",
+     *        @OA\JsonContent(ref="#/components/schemas/Material")
+     *    )
+     * )
+     */
+    public function store() {}
+
+    /**
+     * @OA\Delete(
+     *    path="/api/materials/{id}",
+     *    tags={"Materials"},
+     *    summary="Delete a material by ID",
+     *    @OA\Parameter(
+     *        name="id",
+     *        in="path",
+     *        required=true,
+     *        description="ID of the material to delete",
+     *        @OA\Schema(type="integer")
+     *    ),
+     *    @OA\Response(
+     *        response=204,
+     *        description="Material deleted successfully"
+     *    )
+     * )
+     */
+    public function destroy() {}
+
+    /**
+     * @OA\Put(
+     *    path="/api/materials/{id}",
+     *    tags={"Materials"},
+     *    summary="Update a material by ID",
+     *    @OA\Parameter(
+     *        name="id",
+     *        in="path",
+     *        required=true,
+     *        description="ID of the material to update",
+     *        @OA\Schema(type="integer")
+     *    ),
+     *    @OA\RequestBody(
+     *        required=true,
+     *        @OA\JsonContent(
+     *            required={"subject_id", "title", "content_text", "difficulty"},
+     *            @OA\Property(property="subject_id", type="integer"),
+     *            @OA\Property(property="title", type="string"),
+     *            @OA\Property(property="content_text", type="string"),
+     *            @OA\Property(property="difficulty", type="string", enum={"easy", "medium", "hard"}),
+     *        )
+     *    ),
+     *    @OA\Response(
+     *        response=200,
+     *        description="Material updated successfully",
+     *        @OA\JsonContent(ref="#/components/schemas/Material")
+     *    )
+     * )
+     */
+    public function update() {}
 }
+
+
+
