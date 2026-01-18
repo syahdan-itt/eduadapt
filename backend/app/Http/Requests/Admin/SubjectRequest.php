@@ -4,14 +4,16 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MaterialRequest extends FormRequest
+class SubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        if (auth()->check() && auth()->user()->role == 1)
+            return true;
+        return false;
     }
 
     /**
@@ -25,7 +27,6 @@ class MaterialRequest extends FormRequest
             'subject_id'    => 'required|integer|exists:subjects,id',
             'title'         => 'required|string',
             'content_text'  => 'required|min:200',
-            // 'difficulty'    => 'required|in:easy,medium,hard'
         ];
     }
 }

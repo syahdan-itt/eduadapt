@@ -3,11 +3,17 @@
 namespace App\Swagger;
 
 
+/**
+ * @OA\Tag(
+ *     name="Subjects",
+ *     description="API endpoints for managing subjects"
+ * )
+ */
 class SubjectControllerDoc
 {
     /**
      * @OA\Get(
-     *     path="/api/subjects",
+     *     path="/api/admin/subject",
      *     summary="Get all subjects",
      *     tags={"Subjects"},
      *     @OA\Response(
@@ -24,7 +30,7 @@ class SubjectControllerDoc
 
     /**
      * @OA\Get(
-     *     path="/api/subjects/{id}",
+     *     path="/api/admin/subject/{id}",
      *     summary="Get a subject by ID",
      *     tags={"Subjects"},
      *     @OA\Parameter(
@@ -37,7 +43,9 @@ class SubjectControllerDoc
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\JsonContent(ref="#/components/schemas/Subject")
+     *         @OA\JsonContent(
+     *             ref="#/components/schemas/SubjectWithMaterials"
+     *         )
      *     ),
      *     @OA\Response(
      *         response=404,
@@ -49,7 +57,7 @@ class SubjectControllerDoc
 
     /**
      * @OA\Post(
-     *     path="/api/subjects",
+     *     path="/api/admin/subject",
      *     summary="Create a new subject",
      *     tags={"Subjects"},
      *     @OA\RequestBody(
@@ -67,7 +75,7 @@ class SubjectControllerDoc
 
     /**
      * @OA\Put(
-     *     path="/api/subjects/{id}",
+     *     path="/api/admin/subject/{id}",
      *     summary="Update a subject by ID",
      *     tags={"Subjects"},
      *     @OA\Parameter(
@@ -96,7 +104,7 @@ class SubjectControllerDoc
 
     /**
      * @OA\Delete(
-     *     path="/api/subjects/{id}",
+     *     path="/api/admin/subject/{id}",
      *     summary="Delete a subject by ID",
      *     tags={"Subjects"},
      *     @OA\Parameter(

@@ -21,14 +21,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'John Doe',
             'email' => 'john.doe@example.com',
             'password' => 'password123',
-            'role' => 'teacher',
+            'role' => 1,
         ]);
 
         User::factory()->create([
             'name' => 'Jane Smith',
             'email' => 'jane.smith@example.com',
             'password' => 'password123',
-            'role' => 'student',
+            'role' => 2,
         ]);
+
+        $this->call(SubjectsSeeder::class);
     }
 }
