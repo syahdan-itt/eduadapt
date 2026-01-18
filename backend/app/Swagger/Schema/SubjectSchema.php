@@ -32,7 +32,7 @@ namespace App\Swagger\Schema;
  *          type="string",
  *          format="date-time",
  *          description="Last update timestamp"
- *    ),
+ *    )
  * )
  *
  */
