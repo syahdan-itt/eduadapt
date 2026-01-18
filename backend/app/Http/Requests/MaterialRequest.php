@@ -23,9 +23,9 @@ class MaterialRequest extends FormRequest
     {
         return [
             'subject_id'    => 'required|integer|exists:subjects,id',
-            'title'         => 'required|string|regex:/^[\p{L}\s\-]+$/u',
+            'title'         => 'required|string',
             'content_text'  => 'required|min:200',
-            'difficulty'    => 'required|in:easy,medium,hard'
+            // 'difficulty'    => 'required|in:easy,medium,hard'
         ];
     }
 }
