@@ -62,7 +62,11 @@ class SubjectControllerDoc
      *     tags={"Subjects"},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Subject")
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="description", type="string")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -87,7 +91,11 @@ class SubjectControllerDoc
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Subject")
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             @OA\Property(property="description", type="string")
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
