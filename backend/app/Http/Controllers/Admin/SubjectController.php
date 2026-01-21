@@ -62,7 +62,7 @@ class SubjectController extends Controller
      * @response 200
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, string $id): JsonResponse
+    public function update(SubjectRequest $request, string $id): JsonResponse
     {
         $subject = Subjects::find($id);
         if (!$subject) {
@@ -72,6 +72,7 @@ class SubjectController extends Controller
             'name' => $request->name,
             'description' => $request->description ?? null,
         ]);
+        $subject->save();
         return response()->json($subject);
     }
 
