@@ -24,9 +24,8 @@ class SubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject_id'    => 'required|integer|exists:subjects,id',
-            'title'         => 'required|string',
-            'content_text'  => 'required|min:200',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
         ];
     }
 }
