@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SubjectRequest;
+use App\Http\Requests\Admin\SubjectRequest;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
