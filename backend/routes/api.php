@@ -8,6 +8,11 @@ use App\Http\Controllers\Users\SubjectController as UserSubjectController;
 use App\Http\Controllers\Users\QuizController;
 use App\Http\Controllers\Admin\SubjectController;
 
+Route::prefix('auth')->group(function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::get('/auth/user', function (Request $request) {
