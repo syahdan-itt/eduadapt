@@ -13,6 +13,7 @@ class Quizzes extends Model
     protected $fillable = [
         'material_id',
         'question',
+        'question_type',
         'difficulty',
     ];
 

@@ -16,11 +16,13 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     
     Route::middleware('role:1')->prefix('admin')->group(function () {
-        Route::get('/materials', [MaterialController::class, 'index']);
-        Route::get('/materials/{id}', [MaterialController::class, 'show']);
-        Route::post('/materials', [MaterialController::class, 'store']);
-        Route::put('/materials/{id}', [MaterialController::class, 'update']);
-        Route::delete('/materials/{id}', [MaterialController::class, 'destroy']);
+        Route::prefix('material')->group(function () {
+           Route::get('/', [MaterialController::class, 'index']);
+           Route::get('/{id}', [MaterialController::class, 'show']);
+           Route::post('/', [MaterialController::class, 'store']);
+           Route::put('/{id}', [MaterialController::class, 'update']);
+           Route::delete('/{id}', [MaterialController::class, 'destroy']);
+        });
 
         Route::prefix('subject')->group(function () {
            Route::get('/', [SubjectController::class, 'index']);

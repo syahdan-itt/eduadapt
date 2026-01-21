@@ -22,7 +22,7 @@ class SubjectController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(Subjects::all());
+        return response()->json(Subjects::get());
     }
 
     /**
